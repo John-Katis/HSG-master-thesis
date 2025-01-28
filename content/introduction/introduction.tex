@@ -19,7 +19,7 @@ Yay, an \Cref{sec:appA} \lipsum[5]
 And a \Cref{fig:example} \lipsum[6]
 
 \begin{figure}
-  \includegraphics[width=.5\linewidth]{graphics/example.pdf}
+  \includegraphics[width=\linewidth]{graphics/example.pdf}
   \caption{Example graphics.}
   \label{fig:example}
 \end{figure}
@@ -40,6 +40,32 @@ Table stuff going in \Cref{tab:example} \lipsum[6]
 	\end{tabular}
 \end{table}
 
+Algorithm stuff can be written as in Algorithm \ref{alg:beaver_mult} \lipsum[6]
+
+\begin{algorithm}
+    \caption{Multiplication of secret shared values using Beaver's triple}
+    \label{alg:beaver_mult}
+
+    \textbf{\textsc{Input}}: $[x_1], [x_2]$ - secret shares of the inputs for multiplication
+    \\
+    \textbf{\textsc{Ouput}}: $[y]$ - secret share of the output, where $y=x_1x_2$
+    \\
+    \\
+    \textbf{\textsc{Triple generation}}: Party $P_2$ (similar to a dealer) generates random $a,b$ values and $c$ such that $c=ab$. $P_2$ sends secret shares of $[a],[b],[c]$ to parties $P_0, P_1$.
+    \\
+    \\
+    \textbf{\textsc{Multiplication}}: Each party evaluates:
+
+    \begin{algorithmic}
+         
+        \State Compute $[\Delta a] = [x_1] - [a]$, $[\Delta b] = [x_2] - [b]$
+        \State Exchange $[\Delta a], [\Delta b]$ with the other party and reconstruct $\Delta a, \Delta b$
+        \State Evaluate $[w] = [c] + \Delta a [b] + \Delta b [a] + \Delta a \Delta b$
+        \State return $[w]$
+        
+    \end{algorithmic}
+
+\end{algorithm}
 
 \section{This is a section of a chapter}
 \label{sec:intro:section}
