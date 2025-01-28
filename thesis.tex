@@ -1,0 +1,146 @@
+% !TeX spellcheck = en_US
+% !TeX encoding = UTF-8
+% !TeX root = thesis.tex
+
+% ******************************* Master Thesis Template **************************
+
+
+\documentclass[a4paper,12pt,oneside,times,custommargin]{MasterThesisPSnPDF}
+
+
+% ******************************************************************************
+% ******************************* Class Options ********************************
+% *********************** See README for more details **************************
+% ******************************************************************************
+
+% `a4paper'(The University of Cambridge PhD thesis guidelines recommends a page
+% size a4 - default option) or `a5paper': A5 Paper size is also allowed as per
+% the Cambridge University Engineering Deparment guidelines for PhD thesis
+%
+% `11pt' or `12pt'(default): Font Size 10pt is NOT recommended by the University
+% guidelines
+%
+% `oneside' or `twoside'(default): Printing double side (twoside) or single
+% side.
+%
+% ************************* Custom Page Margins ********************************
+%
+% `custommargin`: Use `custommargin' in options to activate custom page margins,
+% which can be defined in the definitions.tex. Custom margin will override
+% print/online margin setup.
+%
+% *********************** Choosing the Fonts in Class Options ******************
+%
+% `times' : Times font with math support. (The Cambridge University guidelines
+% recommend using times)
+%
+% `fourier': Utopia Font with Fourier Math font (Font has to be installed)
+%            It's a free font.
+%
+% `customfont': Use `customfont' option in the document class and load the
+% package in the preamble.tex
+%
+% default or leave empty: `Latin Modern' font will be loaded.
+%
+% **************************** Choosing the Page Style *************************
+%
+% `default (leave empty)': For Page Numbers in Header (Left Even, Right Odd) and
+% Chapter Name in Header (Right Even) and Section Name (Left Odd). Blank Footer.
+%
+% `PageStyleI': Chapter Name next & Page Number on Even Side (Left Even).
+% Section Name & Page Number in Header on Odd Side (Right Odd). Footer is empty.
+%
+% `PageStyleII': Chapter Name on Even Side (Left Even) in Header. Section Number
+% and Section Name in Header on Odd Side (Right Odd). Page numbering in footer
+
+% ********************************** Preamble **********************************
+% Preamble: Contains packages and user-defined commands and settings
+\input{definitions}
+
+% ************************ Thesis Information & Meta-data **********************
+% Thesis title and author information, refernce file for biblatex
+\input{thesis-info}
+
+
+% ********************************** Table of Contents **********************************
+% Numbering depth - Number up to subsubsections
+\setcounter{secnumdepth}{3}
+% TOC depth - Include up to subsubsections in the TOC
+\setcounter{tocdepth}{3}
+
+% ********************************** Add your abbreviations used here **********************************
+% This is optional - 
+% delete or commend out these if a list of abbreviations will not be used
+
+\newabbreviation{AI}{Artificial Intelligence}
+\newabbreviation{ML}{Machine Learning}
+\newabbreviation{NLP}{Natural Language Processing}
+
+% ******************************** Front Matter ********************************
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\input{overhead/acknowledgements}
+
+\input{content/abstract}
+
+% *********************** Adding TOC and List of Figures ***********************
+
+\tableofcontents
+
+% Optional tables - commend them out if not used
+\listofabbreviations
+\listofalgorithms
+\listoffigures
+\listoftables
+
+% ******************************** Main Matter *********************************
+\mainmatter
+
+\input{content/introduction/introduction}
+
+
+% ********************************** Back Matter *******************************
+% Backmatter should be commented out, if you are using appendices after References
+% \backmatter
+
+% ********************************** Bibliography ******************************
+\begin{spacing}{0.9}
+
+% To use the conventional natbib style referencing
+% Bibliography style previews: http://nodonn.tipido.net/bibstyle.php
+% Reference styles: http://sites.stat.psu.edu/~surajit/present/bib.htm
+
+%\bibliographystyle{apalike}
+%\bibliographystyle{unsrt} % Use for unsorted references  
+%\bibliographystyle{plainnat} % use this to have URLs listed in References
+\cleardoublepage
+
+\printbibliography[heading=bibintoc, title={Bibliography}]
+
+
+\end{spacing}
+
+% ********************************** Appendices ********************************
+
+\begin{appendices} % Using appendices environment for more functunality
+    \input{content/appendices/a.tex}
+\end{appendices}
+
+% Command to add Declaration of Authorship in Table of Contents
+\addcontentsline{toc}{chapter}{Declaration of Authorship}
+
+% Declaration of Authorship
+% DON'T FORGET TO SIGN
+\input{overhead/declaration-of-authorship}
+
+% Command to add Declaration of Auxiliary Aids in Table of Contents
+\addcontentsline{toc}{chapter}{Declaration of Auxiliary Aids}
+
+%Declaration of Auxiliary Aids
+\input{overhead/auxiliary-aids}
+
+\end{document}
